@@ -1,0 +1,92 @@
+<project name="MyProject" default="all" basedir=".">
+    <description>
+        A simple build script.
+    </description>
+  <!-- set global properties for this build -->
+  <!-- set glassfish.home to point to glassfish installation  -->  
+  <property environment="env"/>
+  <property name="glassfish.home" value="${env.GLASSFISH_HOME}"/>
+
+  <property name="entity" value="entity"/>
+  <property name="ejb" value="ejb"/>
+  <property name="client" value="client"/>
+
+  <target name="init">
+    <!-- Create the build directory structure -->
+    <mkdir dir="${entity}"/>
+    <mkdir dir="${ejb}"/>
+    <mkdir dir="${client}"/>
+  </target>
+
+  <target name="all">
+    <antcall target="clean"/>
+    <antcall target="build"/>
+    <antcall target="deploy"/>
+  </target>
+
+  <target name="build" description="build" depends="init">
+    <antcall target="build-entity"/>
+    <antcall target="build-ejb"/>
+    <antcall target="build-client"/>
+    <antcall target="build-jar"/>
+  </target>
+
+  <target name="build-entity"
+        description="Build entity beans" >
+    <javac classpath="${glassfish.home}/lib/javaee.jar" 
+           srcdir="src/entity"
+           destdir="."
+           includes="Uuser.java,Obbject.java, Bid.java"/>
+  </target>
+
+  <target name="build-ejb"
+        description="Build ejb jar" >
+    <javac classpath="${glassfish.home}/lib/javaee.jar:./entities.jar" 
+           srcdir="src/ejb"
+           destdir="."
+           includes="AuctionBean.java,Auction.java, DirectoryBean.java,Directory.java"/>
+  </target>
+
+  <target name="build-client" 
+        description="Build client jar" >
+    <javac classpath="${glassfish.home}/lib/javaee.jar" 
+           srcdir="src/client"
+           destdir="."
+           includes="AuctionClient.java, ManagerClient.java"/>
+  </target>
+  
+  <target name="build-jar" 
+        description="Build jar archive" >
+    <jar destfile="ClientManager.jar"
+         basedir="."
+	 includes="META-INF/persistence.xml,client/,ejb/,entity/"/>
+  </target>
+
+
+  <target name="deploy" 
+          description="deploy">
+    <exec executable="${glassfish.home}/bin/asadmin" 
+          failonerror="true" 
+          vmlauncher="false">
+      <arg line="deploy --retrieve . ClientManager.jar"/>
+    </exec>
+  </target>
+
+  <target name="undeploy" 
+          description="undeploy">
+    <exec executable="${glassfish.home}/bin/asadmin" 
+          failonerror="true" 
+          vmlauncher="false">
+      <arg line="undeploy ClientManager"/>
+    </exec>
+  </target>
+
+  <target name="clean" 
+          description="clean up" >
+    <delete file="ClientManager.jar"/>
+    <delete dir="${entity}"/>
+    <delete dir="${ejb}"/>
+    <delete dir="${client}"/>
+  </target>
+
+</project>

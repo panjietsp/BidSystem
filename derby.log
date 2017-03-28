@@ -1,0 +1,26 @@
+----------------------------------------------------------------
+Tue Mar 28 20:25:02 CEST 2017：正在关闭 Derby 引擎
+----------------------------------------------------------------
+Tue Mar 28 21:44:01 CEST 2017 : Le gestionnaire de sécurité a été installé à l'aide de la stratégie de sécurité de serveur de base.
+Tue Mar 28 21:44:01 CEST 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) démarré et prêt à accepter les connexions sur le port 1527
+Tue Mar 28 21:44:01 CEST 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) démarré et prêt à accepter les connexions sur le port 1527
+----------------------------------------------------------------
+Tue Mar 28 21:44:43 CEST 2017:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446) : instance a816c00e-015b-1672-4d13-ffffdef01972 
+dans le répertoire de base de données /mci/ei1316/pan_jie/appServ/EJBLabs/AuctionSys/sun-appserv-samples avec le chargeur de classe sun.misc.Launcher$AppClassLoader@70dea4e
+Chargé de file:/mci/ei1316/pan_jie/appServ/glassfish4/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b14
+user.dir=/mci/ei1316/pan_jie/appServ/EJBLabs/AuctionSys
+os.name=Linux
+os.arch=amd64
+os.version=4.7.10-100.fc23.x86_64
+derby.system.home=/mci/ei1316/pan_jie/appServ/EJBLabs/AuctionSys
+Chargeur de classe de la base de données démarré - derby.database.classpath = ''
+----------------------------------------------------------------
+Tue Mar 28 21:53:06 CEST 2017 : fermeture du moteur Derby
+----------------------------------------------------------------
+Tue Mar 28 21:53:06 CEST 2017:
+Fermeture de l'instance a816c00e-015b-1672-4d13-ffffdef01972 sur le répertoire de base de données /mci/ei1316/pan_jie/appServ/EJBLabs/AuctionSys/sun-appserv-samples avec le chargeur de classe sun.misc.Launcher$AppClassLoader@70dea4e 
+----------------------------------------------------------------
+Tue Mar 28 21:53:06 CEST 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) arrêté
